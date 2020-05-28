@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 //importar as rotas
 const routes = require('./routes'); // ./ caminho do arquivo
+const {errors} = require('celebrate');
 
 const app = express();
 
@@ -9,8 +10,9 @@ app.use(cors());//permite que a aplicação front-end acesse o backend
 //informar que o corpo da requisição será lido um JSON
 app.use(express.json()); 
 app.use(routes);
+app.use(errors());
 
-app.listen(3333);
+module.exports = app;
  // -- Anotações --
 /**
  *  Rotas & Recursos
